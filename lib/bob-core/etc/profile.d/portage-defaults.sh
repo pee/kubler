@@ -4,13 +4,13 @@
 # on the downside this needs to be sourced before building anything
 
 if [[ -z "${USE_BUILDER_FLAGS}" ]]; then
-    export CFLAGS="${DEF_CFLAGS:--mtune=generic -O2 -pipe}"
+    export CFLAGS="${DEF_CFLAGS:--march=native -O2 -pipe}"
     export CXXFLAGS="${DEF_CXXFLAGS:-${CFLAGS}}"
 
     export CHOST="${DEF_CHOST:-x86_64-pc-linux-gnu}"
 else
     # when using crossdev this configures the "host" compiler
-    export CFLAGS="${DEF_BUILDER_CFLAGS:--mtune=generic -O2 -pipe}"
+    export CFLAGS="${DEF_BUILDER_CFLAGS:--march=native -O2 -pipe}"
     export CXXFLAGS="${DEF_BUILDER_CXXFLAGS:-${CFLAGS}}"
 
     export CHOST="${DEF_BUILDER_CHOST:-x86_64-pc-linux-gnu}"
